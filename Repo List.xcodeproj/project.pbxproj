@@ -29,6 +29,8 @@
 		1548554B1EC79F9F0001E07F /* ReposDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548554A1EC79F9F0001E07F /* ReposDataLoader.swift */; };
 		1548554D1EC79FAD0001E07F /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548554C1EC79FAD0001E07F /* DataLoader.swift */; };
 		15B4AB671EC8723B00EE4124 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15B4AB661EC8723B00EE4124 /* Secrets.plist */; };
+		15B4AB691EC8BE9A00EE4124 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4AB681EC8BE9A00EE4124 /* WelcomeViewController.swift */; };
+		15B4AB6B1EC8CFC900EE4124 /* RepoListDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4AB6A1EC8CFC900EE4124 /* RepoListDefaults.swift */; };
 		5F77832C24B67FF29CD520F5 /* Pods_Repo_ListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB202FC00B3D195D2FE2F20D /* Pods_Repo_ListTests.framework */; };
 		870E6AA9FA12749BCC90A157 /* Pods_Repo_ListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FE9719D725E6DDE913CEF9 /* Pods_Repo_ListUITests.framework */; };
 		B41CB5D778AE75BB7C506C17 /* Pods_Repo_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F142F01D4769B524CBBCC8 /* Pods_Repo_List.framework */; };
@@ -77,6 +79,8 @@
 		1548554A1EC79F9F0001E07F /* ReposDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposDataLoader.swift; sourceTree = "<group>"; };
 		1548554C1EC79FAD0001E07F /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		15B4AB661EC8723B00EE4124 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		15B4AB681EC8BE9A00EE4124 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		15B4AB6A1EC8CFC900EE4124 /* RepoListDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListDefaults.swift; sourceTree = "<group>"; };
 		1A9818B278A2D5FA90544404 /* Pods-Repo List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Repo List.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Repo List/Pods-Repo List.debug.xcconfig"; sourceTree = "<group>"; };
 		2956CBEC3075A3048DC9A3C0 /* Pods-Repo ListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Repo ListUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Repo ListUITests/Pods-Repo ListUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A9854AF4053CC07E321D58C /* Pods-Repo ListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Repo ListUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Repo ListUITests/Pods-Repo ListUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,7 +150,9 @@
 				154855221EC77F270001E07F /* Model */,
 				154855491EC79F850001E07F /* Repos List */,
 				154854E41EC4CE990001E07F /* AppDelegate.swift */,
+				15B4AB6A1EC8CFC900EE4124 /* RepoListDefaults.swift */,
 				1548554C1EC79FAD0001E07F /* DataLoader.swift */,
+				15B4AB681EC8BE9A00EE4124 /* WelcomeViewController.swift */,
 				154854E81EC4CE990001E07F /* Main.storyboard */,
 				154854EE1EC4CE990001E07F /* Assets.xcassets */,
 				154854F01EC4CE990001E07F /* LaunchScreen.storyboard */,
@@ -532,6 +538,7 @@
 			files = (
 				154854ED1EC4CE990001E07F /* Repo_List.xcdatamodeld in Sources */,
 				154855331EC7879A0001E07F /* Repo+CoreDataClass.swift in Sources */,
+				15B4AB6B1EC8CFC900EE4124 /* RepoListDefaults.swift in Sources */,
 				154855211EC77E780001E07F /* ReposViewController.swift in Sources */,
 				154854E51EC4CE990001E07F /* AppDelegate.swift in Sources */,
 				1548554B1EC79F9F0001E07F /* ReposDataLoader.swift in Sources */,
@@ -539,6 +546,7 @@
 				1548552C1EC784B00001E07F /* Repo+JSON.swift in Sources */,
 				1548554D1EC79FAD0001E07F /* DataLoader.swift in Sources */,
 				154855341EC7879A0001E07F /* Repo+CoreDataProperties.swift in Sources */,
+				15B4AB691EC8BE9A00EE4124 /* WelcomeViewController.swift in Sources */,
 				154855461EC799ED0001E07F /* Authenticator.swift in Sources */,
 				154855481EC79CD90001E07F /* RepoService.swift in Sources */,
 			);

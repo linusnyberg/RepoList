@@ -21,13 +21,15 @@ class Authenticator {
 		self.viewController = viewController
 	}
 
-	func ensureAuthenticated() {
+	func ensureAuthenticated(completionHandler:@escaping (Bool) -> ()) {
 		if !Authenticator.authenticated {
-			authenticate()
-		} 
+			authenticate(completionHandler: completionHandler)
+		} else {
+			completionHandler(true)
+		}
 	}
 
-	func authenticate() {
+	func authenticate(completionHandler: @escaping (Bool) -> ()) {
 		// Read secrets from Plist file:
 		//------------------------------
 		let path = Bundle.main.path(forResource: "Secrets", ofType: "plist")
@@ -59,9 +61,11 @@ class Authenticator {
 				sessionManager.adapter = oauthswift.requestAdapter
 
 				Authenticator.authenticated = true
+				completionHandler(true)
 			},
 			failure: { error in
 				print(error.description)
+				completionHandler(false)
 			}
 		)
 	}

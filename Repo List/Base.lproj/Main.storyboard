@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Ha-5r-IYI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eHM-6Z-RNW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,25 +26,64 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgo-Lo-Ocb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="-647.22638680659679"/>
+            <point key="canvasLocation" x="1801" y="19"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="95Q-aV-Hqu">
+            <objects>
+                <viewController id="NLb-i9-8cj" customClass="WelcomeViewController" customModule="Repo_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ml-er-Gjf"/>
+                        <viewControllerLayoutGuide type="bottom" id="1bW-Bq-DfN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l8R-gq-Ffi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SVa-gi-z3K">
+                                <rect key="frame" x="177" y="366" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ax-DO-1ac">
+                                <rect key="frame" x="105" y="318" width="164" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <state key="normal" title="Log in with Github"/>
+                                <connections>
+                                    <action selector="loginAction:" destination="NLb-i9-8cj" eventType="touchUpInside" id="QA2-cP-rlq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="XFH-Vp-lgI"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="SVa-gi-z3K" id="8Pc-gw-V2i"/>
+                        <outlet property="loginButton" destination="9ax-DO-1ac" id="gdV-t2-Flq"/>
+                        <segue destination="E6q-EK-bDh" kind="showDetail" identifier="showRepos" action="showViewController:sender:" id="POx-c7-jZu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hyu-fO-Vxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="20"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="tw4-S7-K0R">
+        <scene sceneID="gGh-rf-AAf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Ha-5r-IYI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eHM-6Z-RNW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kIi-rI-fWN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Voz-Iz-piQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="E6q-EK-bDh" kind="relationship" relationship="rootViewController" id="OK7-CL-Uvh"/>
+                        <segue destination="NLb-i9-8cj" kind="relationship" relationship="rootViewController" id="Hnf-wT-SEh"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SnA-yh-qBQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AaX-rh-X7K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24.800000000000001" y="-647.22638680659679"/>
+            <point key="canvasLocation" x="25" y="20"/>
         </scene>
     </scenes>
 </document>

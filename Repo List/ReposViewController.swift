@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 /// The list of saved repos
 class ReposViewController: UITableViewController {
@@ -32,14 +33,16 @@ class ReposViewController: UITableViewController {
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RepoCell")
 
 		tableView.delegate = self
+
+		navigationItem.hidesBackButton = true
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
-		let saveItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(ReposViewController.logoutAction(_:)))
+		let logoutItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(ReposViewController.logoutAction(_:)))
 		self.navigationController?.isToolbarHidden = false
-		self.toolbarItems = [saveItem]
+		self.toolbarItems = [logoutItem]
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -56,9 +59,15 @@ class ReposViewController: UITableViewController {
 
 	// MARK: - Actions
 
-	@IBAction func logoutAction(_ sender: Any) {
-		// TODO: Implement
-		print("log out action!")
+	func logoutAction(_ sender: Any) {
+
+		// Open Github's logout page to perform the actual logout:
+		let urlString = "https://github.com/logout"
+		if let url = URL(string: urlString) {
+			let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+			vc.delegate = self
+			present(vc, animated: true)
+		}
 	}
 
 	// MARK: - Helpers
@@ -135,4 +144,30 @@ extension ReposViewController{
 		navigationController.pushViewController(repoViewController, animated: true)
 	}
 */
+}
+
+// MARK: - SFSafariViewControllerDelegate
+extension ReposViewController: SFSafariViewControllerDelegate {
+	func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+		print("Safari view controller dismissed")
+
+		// TODO: We don't actually know if the user chose to log out once inside the safari view controller. Figure out how to deal with that...
+
+		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+			return
+		}
+
+		// Clear the table:
+		repos = []
+		tableView.reloadData()
+
+		// Completely empty the local store:
+		appDelegate.deleteAllData()
+
+		// Clear the flag from userdefaults
+		RepoListDefaults.hasLoggedIn = false
+
+		// Go to welcome screen
+		navigationController?.popViewController(animated: true)
+	}
 }
