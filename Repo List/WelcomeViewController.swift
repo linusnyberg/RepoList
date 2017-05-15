@@ -44,7 +44,7 @@ class WelcomeViewController: UIViewController {
 		RepoListDefaults.hasLoggedIn = true
 
 		let authenticator = Authenticator(viewController: self)
-		authenticator.authenticate() { authenticated in
+		authenticator.authenticate(forced: true) { authenticated in
 			if (authenticated) {
 				self.performSegue(withIdentifier: "showRepos", sender: self)
 			}

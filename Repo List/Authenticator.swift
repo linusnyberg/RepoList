@@ -21,30 +21,40 @@ class Authenticator {
 		self.viewController = viewController
 	}
 
+	/// Checks if the user has authenticated before (during the app's current lifetime), and otherwise tries to authenticate.
 	func ensureAuthenticated(completionHandler:@escaping (Bool) -> ()) {
 		if !Authenticator.authenticated {
-			authenticate(completionHandler: completionHandler)
+			authenticate(forced: false, completionHandler: completionHandler)
 		} else {
 			completionHandler(true)
 		}
 	}
 
-	func authenticate(completionHandler: @escaping (Bool) -> ()) {
+	/// Tries to authenticate, either by reading a token from the keychain or by starting the oauth flow.
+	/// - parameter forced: If true, the keychain is ignored and it goes straight to the oauth flow.
+	func authenticate(forced: Bool, completionHandler: @escaping (Bool) -> ()) {
+		
 		// Read secrets from Plist file:
 		//------------------------------
-		let path = Bundle.main.path(forResource: "Secrets", ofType: "plist")
-		let dict = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]
-		let clientID = dict!["GithubClientID"] as! String
-		let clientSecret = dict!["GithubClientSecret"] as! String
+		let oauthswift = makeOAuth2SwiftObject()
 
-		let oauthswift = OAuth2Swift(
-			consumerKey:    clientID,
-			consumerSecret: clientSecret,
-			authorizeUrl:   "https://github.com/login/oauth/authorize",
-			accessTokenUrl: "https://github.com/login/oauth/access_token",
-			responseType:   "code"
-		)
-		oauthswift.authorizeURLHandler = getURLHandler(oauthswift: oauthswift)
+		// Check if there's a token stored in the keychain
+		//------------------------------------------------
+		if (!forced) {
+			// Check the keychain for a previous token, and use that:
+			let keychain = TokenKeychain()
+			if (keychain.readCredentialsFromKeychain(useValues: { (outhToken: String, oauthTokenSecret: String) in
+				oauthswift.client.credential.oauthToken = outhToken
+				oauthswift.client.credential.oauthTokenSecret = oauthTokenSecret
+			})) {
+				print("Using stored token for session.")
+				self.completeLogin(oauthswift: oauthswift)
+				completionHandler(true)
+				return
+			}
+		}
+
+		oauthswift.authorizeURLHandler = makeURLHandler(oauthswift: oauthswift)
 		let state = generateState(withLength: 20)
 
 		// Perform the login call
@@ -54,13 +64,13 @@ class Authenticator {
 			success: { credential, response, parameters in
 				// Success
 				//--------
-				print("oauth_token:\(credential.oauthToken)")
+				print("Logged into Github. oauthToken:\(credential.oauthToken)")
 
-				// Let `OAuthSwiftAlamofire` configure an adapter that automatically adds the auth token to all requests:
-				let sessionManager = SessionManager.default
-				sessionManager.adapter = oauthswift.requestAdapter
+				// Save the credentials to keychain
+				let keychain = TokenKeychain()
+				keychain.saveToKeychain(oauthToken: credential.oauthToken, oauthTokenSecret: credential.oauthTokenSecret)
 
-				Authenticator.authenticated = true
+				self.completeLogin(oauthswift: oauthswift)
 				completionHandler(true)
 			},
 			failure: { error in
@@ -70,7 +80,24 @@ class Authenticator {
 		)
 	}
 
-	func getURLHandler(oauthswift: OAuth2Swift?) -> OAuthSwiftURLHandlerType {
+	/// Creates an "OAuth2Swift" object, configured for Github access.
+	func makeOAuth2SwiftObject() -> OAuth2Swift {
+		let path = Bundle.main.path(forResource: "Secrets", ofType: "plist")
+		let dict = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]
+		let clientID = dict!["GithubClientID"] as! String
+		let clientSecret = dict!["GithubClientSecret"] as! String
+
+		return OAuth2Swift(
+			consumerKey:    clientID,
+			consumerSecret: clientSecret,
+			authorizeUrl:   "https://github.com/login/oauth/authorize",
+			accessTokenUrl: "https://github.com/login/oauth/access_token",
+			responseType:   "code"
+		)
+	}
+
+	/// Creates a URL handler that presents the authorization page to the user.
+	func makeURLHandler(oauthswift: OAuth2Swift?) -> OAuthSwiftURLHandlerType {
 		let handler = SafariURLHandler(viewController: self.viewController, oauthSwift: oauthswift!)
 		handler.presentCompletion = {
 			print("Safari presented")
@@ -79,5 +106,14 @@ class Authenticator {
 			print("Safari dismissed")
 		}
 		return handler
+	}
+
+	/// Finalizes the login procedure.
+	func completeLogin(oauthswift: OAuth2Swift) {
+		// Let `OAuthSwiftAlamofire` configure an adapter that automatically adds the auth token to all requests:
+		let sessionManager = SessionManager.default
+		sessionManager.adapter = oauthswift.requestAdapter
+
+		Authenticator.authenticated = true
 	}
 }

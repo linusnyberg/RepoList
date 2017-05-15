@@ -167,6 +167,10 @@ extension ReposViewController: SFSafariViewControllerDelegate {
 		// Clear the flag from userdefaults
 		RepoListDefaults.hasLoggedIn = false
 
+		// Clear the keychain
+		let keychain = TokenKeychain()
+		keychain.clearCredentials()
+
 		// Go to welcome screen
 		navigationController?.popViewController(animated: true)
 	}
