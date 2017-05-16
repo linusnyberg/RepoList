@@ -30,6 +30,8 @@
 		1548554D1EC79FAD0001E07F /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548554C1EC79FAD0001E07F /* DataLoader.swift */; };
 		155B33431ECA2DD4007B69FE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 155B33421ECA2DD4007B69FE /* Podfile */; };
 		155B33471ECA35AF007B69FE /* TokenKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B33461ECA35AF007B69FE /* TokenKeychain.swift */; };
+		155B33601ECB6750007B69FE /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B335E1ECB6750007B69FE /* RepoTableViewCell.swift */; };
+		155B33611ECB6750007B69FE /* RepoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155B335F1ECB6750007B69FE /* RepoTableViewCell.xib */; };
 		15B4AB671EC8723B00EE4124 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15B4AB661EC8723B00EE4124 /* Secrets.plist */; };
 		15B4AB691EC8BE9A00EE4124 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4AB681EC8BE9A00EE4124 /* WelcomeViewController.swift */; };
 		15B4AB6B1EC8CFC900EE4124 /* RepoListDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4AB6A1EC8CFC900EE4124 /* RepoListDefaults.swift */; };
@@ -82,6 +84,8 @@
 		1548554C1EC79FAD0001E07F /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		155B33421ECA2DD4007B69FE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		155B33461ECA35AF007B69FE /* TokenKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenKeychain.swift; sourceTree = "<group>"; };
+		155B335E1ECB6750007B69FE /* RepoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		155B335F1ECB6750007B69FE /* RepoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTableViewCell.xib; sourceTree = "<group>"; };
 		15B4AB661EC8723B00EE4124 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		15B4AB681EC8BE9A00EE4124 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		15B4AB6A1EC8CFC900EE4124 /* RepoListDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListDefaults.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 			children = (
 				154855201EC77E780001E07F /* ReposViewController.swift */,
 				1548554A1EC79F9F0001E07F /* ReposDataLoader.swift */,
+				155B335E1ECB6750007B69FE /* RepoTableViewCell.swift */,
+				155B335F1ECB6750007B69FE /* RepoTableViewCell.xib */,
 			);
 			name = "Repos List";
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155B33611ECB6750007B69FE /* RepoTableViewCell.xib in Resources */,
 				155B33431ECA2DD4007B69FE /* Podfile in Resources */,
 				154854F21EC4CE990001E07F /* LaunchScreen.storyboard in Resources */,
 				15B4AB671EC8723B00EE4124 /* Secrets.plist in Resources */,
@@ -551,6 +558,7 @@
 				155B33471ECA35AF007B69FE /* TokenKeychain.swift in Sources */,
 				1548554B1EC79F9F0001E07F /* ReposDataLoader.swift in Sources */,
 				154855441EC7984D0001E07F /* RepoStore.swift in Sources */,
+				155B33601ECB6750007B69FE /* RepoTableViewCell.swift in Sources */,
 				1548552C1EC784B00001E07F /* Repo+JSON.swift in Sources */,
 				1548554D1EC79FAD0001E07F /* DataLoader.swift in Sources */,
 				154855341EC7879A0001E07F /* Repo+CoreDataProperties.swift in Sources */,

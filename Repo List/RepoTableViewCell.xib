@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="86" id="KGk-i7-Jjw" customClass="RepoTableViewCell" customModule="Repo_List" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="494" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="494" height="85.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repo name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xH6-Bz-ZTZ">
+                        <rect key="frame" x="48" y="16" width="438" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23" id="5Nz-aJ-bjN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="repo-icon" translatesAutoresizingMaskIntoConstraints="NO" id="aW6-t1-MkJ">
+                        <rect key="frame" x="8" y="11.5" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="CsI-1V-MMg"/>
+                            <constraint firstAttribute="width" constant="32" id="tIC-Ge-cgt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7I-xO-5Y0">
+                        <rect key="frame" x="48" y="52" width="438" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="HVa-jX-dVm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="c7I-xO-5Y0" firstAttribute="top" secondItem="xH6-Bz-ZTZ" secondAttribute="bottom" constant="13" id="7g0-2D-aHF"/>
+                    <constraint firstItem="xH6-Bz-ZTZ" firstAttribute="leading" secondItem="aW6-t1-MkJ" secondAttribute="trailing" constant="8" id="C3d-m6-Bnr"/>
+                    <constraint firstItem="c7I-xO-5Y0" firstAttribute="leading" secondItem="xH6-Bz-ZTZ" secondAttribute="leading" id="Lwh-SY-ehN"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="c7I-xO-5Y0" secondAttribute="bottom" priority="750" constant="8" id="Tjc-at-6lf"/>
+                    <constraint firstItem="aW6-t1-MkJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3.5" id="aFt-LG-xF3"/>
+                    <constraint firstItem="xH6-Bz-ZTZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="eC0-PW-K55"/>
+                    <constraint firstItem="xH6-Bz-ZTZ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="nde-ow-yvU"/>
+                    <constraint firstItem="c7I-xO-5Y0" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="tHQ-s7-WHa"/>
+                    <constraint firstItem="aW6-t1-MkJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vaX-07-nAW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="repoDescriptionLabel" destination="c7I-xO-5Y0" id="abI-Pz-ly2"/>
+                <outlet property="repoNameLabel" destination="xH6-Bz-ZTZ" id="OIv-wY-eGV"/>
+            </connections>
+            <point key="canvasLocation" x="112" y="73"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="repo-icon" width="48" height="64"/>
+    </resources>
+</document>

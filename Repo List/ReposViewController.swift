@@ -30,7 +30,8 @@ class ReposViewController: UITableViewController {
 		super.viewDidLoad()
 
 		title = "Repos"
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RepoCell")
+		tableView.register(UINib(nibName: "RepoTableViewCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
+		tableView.estimatedRowHeight = 86
 
 		tableView.delegate = self
 
@@ -106,20 +107,12 @@ extension ReposViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "RepoCell", for:indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "RepoCell", for:indexPath) as! RepoTableViewCell
+
 		let repo = repos[indexPath.row]
 
-		var names = Array<String>()
-		if (repo.repoName.characters.count > 0) {
-			names.append(repo.repoName)
-		}
-		if (names.count == 1) {
-			cell.textLabel?.text = "\(names[0])"
-		} else if (names.count == 2) {
-			cell.textLabel?.text = "\(names[0]) (\(names[1]))"
-		} else {
-			cell.textLabel?.text = "?"
-		}
+		cell.repoNameLabel.text = repo.repoName
+		cell.repoDescriptionLabel.text = repo.repoDescription
 
 		return cell
 	}

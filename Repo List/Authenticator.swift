@@ -34,8 +34,6 @@ class Authenticator {
 	/// - parameter forced: If true, the keychain is ignored and it goes straight to the oauth flow.
 	func authenticate(forced: Bool, completionHandler: @escaping (Bool) -> ()) {
 		
-		// Read secrets from Plist file:
-		//------------------------------
 		let oauthswift = makeOAuth2SwiftObject()
 
 		// Check if there's a token stored in the keychain
@@ -82,6 +80,7 @@ class Authenticator {
 
 	/// Creates an "OAuth2Swift" object, configured for Github access.
 	func makeOAuth2SwiftObject() -> OAuth2Swift {
+		// Read secrets from Plist file:
 		let path = Bundle.main.path(forResource: "Secrets", ofType: "plist")
 		let dict = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]
 		let clientID = dict!["GithubClientID"] as! String
