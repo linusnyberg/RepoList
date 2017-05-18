@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Repo" representedClassName=".Repo" syncable="YES">
         <attribute name="repoDescription" attributeType="String" syncable="YES"/>
         <attribute name="repoHtmlURL" attributeType="String" syncable="YES"/>
+        <attribute name="repoLanguage" attributeType="String" defaultValueString="?" syncable="YES"/>
         <attribute name="repoName" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Repo" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Repo" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

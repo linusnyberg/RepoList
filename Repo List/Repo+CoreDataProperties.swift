@@ -19,5 +19,6 @@ extension Repo {
     @NSManaged public var repoName: String
     @NSManaged public var repoDescription: String
     @NSManaged public var repoHtmlURL: String
+	@NSManaged public var repoLanguage: String
 
 }

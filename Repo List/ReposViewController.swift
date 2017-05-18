@@ -124,19 +124,17 @@ extension ReposViewController {
 
 // MARK: - UITableViewDelegate
 extension ReposViewController{
-/*
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let navigationController = self.navigationController else {
 			return
 		}
 
 		let repo = repos[indexPath.row]
-		let repoViewModel = RepoViewModel(repo: repo)
+		let repoViewModel = RepoDetailsViewModel(repo: repo)
 
-		let repoViewController = RepoViewController(viewModel: repoViewModel)
+		let repoViewController = RepoDetailsViewController(viewModel: repoViewModel)
 		navigationController.pushViewController(repoViewController, animated: true)
 	}
-*/
 }
 
 // MARK: - SFSafariViewControllerDelegate

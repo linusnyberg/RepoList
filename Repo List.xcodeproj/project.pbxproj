@@ -32,6 +32,8 @@
 		155B33471ECA35AF007B69FE /* TokenKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B33461ECA35AF007B69FE /* TokenKeychain.swift */; };
 		155B33601ECB6750007B69FE /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B335E1ECB6750007B69FE /* RepoTableViewCell.swift */; };
 		155B33611ECB6750007B69FE /* RepoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155B335F1ECB6750007B69FE /* RepoTableViewCell.xib */; };
+		155B33641ECB959B007B69FE /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B33631ECB959B007B69FE /* RepoDetailsViewController.swift */; };
+		155B33661ECB99C2007B69FE /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B33651ECB99C2007B69FE /* RepoDetailsViewModel.swift */; };
 		15B4AB671EC8723B00EE4124 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15B4AB661EC8723B00EE4124 /* Secrets.plist */; };
 		15B4AB691EC8BE9A00EE4124 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4AB681EC8BE9A00EE4124 /* WelcomeViewController.swift */; };
 		15B4AB6B1EC8CFC900EE4124 /* RepoListDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4AB6A1EC8CFC900EE4124 /* RepoListDefaults.swift */; };
@@ -86,6 +88,8 @@
 		155B33461ECA35AF007B69FE /* TokenKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenKeychain.swift; sourceTree = "<group>"; };
 		155B335E1ECB6750007B69FE /* RepoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
 		155B335F1ECB6750007B69FE /* RepoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTableViewCell.xib; sourceTree = "<group>"; };
+		155B33631ECB959B007B69FE /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
+		155B33651ECB99C2007B69FE /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
 		15B4AB661EC8723B00EE4124 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		15B4AB681EC8BE9A00EE4124 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		15B4AB6A1EC8CFC900EE4124 /* RepoListDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListDefaults.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				154855351EC788740001E07F /* Local Data */,
 				154855221EC77F270001E07F /* Model */,
 				154855491EC79F850001E07F /* Repos List */,
+				155B33621ECB956A007B69FE /* Repo Details */,
 				154854E41EC4CE990001E07F /* AppDelegate.swift */,
 				15B4AB6A1EC8CFC900EE4124 /* RepoListDefaults.swift */,
 				155B33461ECA35AF007B69FE /* TokenKeychain.swift */,
@@ -237,6 +242,15 @@
 				155B335F1ECB6750007B69FE /* RepoTableViewCell.xib */,
 			);
 			name = "Repos List";
+			sourceTree = "<group>";
+		};
+		155B33621ECB956A007B69FE /* Repo Details */ = {
+			isa = PBXGroup;
+			children = (
+				155B33631ECB959B007B69FE /* RepoDetailsViewController.swift */,
+				155B33651ECB99C2007B69FE /* RepoDetailsViewModel.swift */,
+			);
+			name = "Repo Details";
 			sourceTree = "<group>";
 		};
 		1751F715FF65E9B5281FF519 /* Pods */ = {
@@ -555,12 +569,14 @@
 				15B4AB6B1EC8CFC900EE4124 /* RepoListDefaults.swift in Sources */,
 				154855211EC77E780001E07F /* ReposViewController.swift in Sources */,
 				154854E51EC4CE990001E07F /* AppDelegate.swift in Sources */,
+				155B33641ECB959B007B69FE /* RepoDetailsViewController.swift in Sources */,
 				155B33471ECA35AF007B69FE /* TokenKeychain.swift in Sources */,
 				1548554B1EC79F9F0001E07F /* ReposDataLoader.swift in Sources */,
 				154855441EC7984D0001E07F /* RepoStore.swift in Sources */,
 				155B33601ECB6750007B69FE /* RepoTableViewCell.swift in Sources */,
 				1548552C1EC784B00001E07F /* Repo+JSON.swift in Sources */,
 				1548554D1EC79FAD0001E07F /* DataLoader.swift in Sources */,
+				155B33661ECB99C2007B69FE /* RepoDetailsViewModel.swift in Sources */,
 				154855341EC7879A0001E07F /* Repo+CoreDataProperties.swift in Sources */,
 				15B4AB691EC8BE9A00EE4124 /* WelcomeViewController.swift in Sources */,
 				154855461EC799ED0001E07F /* Authenticator.swift in Sources */,
