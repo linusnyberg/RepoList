@@ -24,8 +24,9 @@ class RepoStore {
 
 		do {
 			let repos = try managedContext.fetch(fetchRequest)
-			// TODO: Sort?
-			return repos
+			return repos.sorted(by: { (first: Repo, second: Repo) -> Bool in
+				return first.repoName.localizedCaseInsensitiveCompare(second.repoName) == .orderedAscending
+			})
 		} catch let error as NSError {
 			print("Failed fetching repos: \(error), \(error.userInfo)")
 		}

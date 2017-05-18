@@ -44,30 +44,25 @@ class RepoService {
 						return
 					}
 
-					/*
-					let string1 = String(data: response.data!, encoding: String.Encoding.utf8) ?? "Data could not be printed"
-					print(string1)
-					*/
-
 					guard let jsonDicts = response.result.value as? NSArray else {
 						print("UNKNOWN RESPONSE: \(String(describing: response.result.value))")
 						return
 					}
-					print("RESPONSE: \(jsonDicts)")
+					//print("RESPONSE: \(jsonDicts)")
 
 					// Parse repos and add them to the store:
 					//---------------------------------------
 					strongSelf.store.clearRepos()
-					let repos = jsonDicts.flatMap({ (jsonDict) -> Repo? in
+					for jsonDict in jsonDicts {
 						guard let jsonData = jsonDict as? NSDictionary else {
-							return nil
+							continue
 						}
-						return strongSelf.store.addRepo(populateValues: { (repo: Repo) in
+						_ = strongSelf.store.addRepo(populateValues: { (repo: Repo) in
 							repo.populateFromJSON(jsonData: jsonData)
 						})
-					})
-					
-					completion(repos)
+					}
+
+					completion(strongSelf.store.loadRepos())
 			}
 		}
 	}
