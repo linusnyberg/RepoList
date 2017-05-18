@@ -12,7 +12,7 @@ import UIKit
 
 /// Loads data for the "Repos" view (ReposViewController).
 class ReposDataLoader {
-	var delegate: DataLoaderDelegate?
+	weak var delegate: DataLoaderDelegate?
 	var loadingState: LoadingState = .neverLoaded
 
 	/// For loading cached data
