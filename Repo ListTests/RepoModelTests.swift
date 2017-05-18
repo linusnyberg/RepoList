@@ -30,9 +30,10 @@ class RepoModelTests: XCTestCase {
 
 		repo?.populateFromJSON(jsonData: jsonData!)
 
-		XCTAssertEqual(repo?.repoName, "SomeRepo", "repoName should be parsed from JSON data")
-		XCTAssertEqual(repo?.repoDescription, "iOS app that lets you save the current map location for later reference.", "repoName should be parsed from JSON data")
-		XCTAssertEqual(repo?.repoHtmlURL, "https://github.com/someuser/SomeRepo", "repoName should be parsed from JSON data")
+		XCTAssertEqual(repo?.repoName, "SomeRepo", "Name should be parsed from JSON data")
+		XCTAssertEqual(repo?.repoDescription, "iOS app that lets you save the current map location for later reference.", "Description should be parsed from JSON data")
+		XCTAssertEqual(repo?.repoHtmlURL, "https://github.com/someuser/SomeRepo", "HTML URL should be parsed from JSON data")
+		XCTAssertEqual(repo?.repoLanguage, "Swift", "Language should be parsed from JSON data")
 	}
 
 	// MARK: - Creation methods
