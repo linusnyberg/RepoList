@@ -80,28 +80,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}()
 
 	func deleteAllData() {
-		let managedContext = persistentContainer.viewContext
-		let container = NSPersistentContainer(name: "Repo_List")
-		let storeCoordinator = container.persistentStoreCoordinator
-		managedContext.performAndWait {
-			for store in storeCoordinator.persistentStores {
-				do {
-					print("Removing persistent store.")
-					try storeCoordinator.remove(store)
-				} catch {
-					print("Failed removing persistent store!")
-				}
-				guard let url = store.url else {
-					continue;
-				}
-				do {
-					print("Removing file for store: \(url.path)")
-					try FileManager.default.removeItem(atPath: url.path)
-				} catch {
-					print("Failed removing persistent store!")
-				}
+		let storeCoordinator = persistentContainer.persistentStoreCoordinator
+
+		print("Deleting persistent stores:")
+		for store in storeCoordinator.persistentStores {
+			print("- \(store)")
+			guard let url = store.url else {
+				continue;
+			}
+			print("url = \(url)")
+			do {
+    			try storeCoordinator.destroyPersistentStore(at: url, ofType: NSSQLiteStoreType, options: nil)
+			} catch {
+				print("Failed removing persistent store!")
 			}
 		}
+
+		print("Reloading persistent stores")
+		persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+			if let error = error as NSError? {
+				fatalError("Unresolved error \(error), \(error.userInfo)")
+			}
+		})
 	}
 
 	// MARK: - Core Data Saving support

@@ -57,6 +57,7 @@ class RepoService {
 						guard let jsonData = jsonDict as? NSDictionary else {
 							continue
 						}
+						// TODO: Add these to the store in a single operation, to avoid many saves to disk.
 						_ = strongSelf.store.addRepo(populateValues: { (repo: Repo) in
 							repo.populateFromJSON(jsonData: jsonData)
 						})
