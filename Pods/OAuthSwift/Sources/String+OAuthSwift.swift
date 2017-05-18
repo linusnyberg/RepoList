@@ -47,11 +47,11 @@ extension String {
             scanner.scanUpTo(elementSeparator, into: &value)
             scanner.scanString(elementSeparator, into: nil)
 
-            if let key = key as? String, let value = value as? String {
+            if let key = key as String?, let value = value as String? {
                 parameters.updateValue(value, forKey: key)
             }
         }
-        
+
         return parameters
     }
         
@@ -85,7 +85,7 @@ extension String.Encoding {
     
     var charset: String {
         let charset = CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(self.rawValue))
-        return charset as! String
+        return charset! as String
     }
 
 }
