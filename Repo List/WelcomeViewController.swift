@@ -41,11 +41,10 @@ class WelcomeViewController: UIViewController {
 		activityIndicator.isHidden = false
 		activityIndicator.startAnimating()
 
-		RepoListDefaults.hasLoggedIn = true
-
 		let authenticator = Authenticator(viewController: self)
 		authenticator.authenticate(forced: true) { authenticated in
 			if (authenticated) {
+				RepoListDefaults.hasLoggedIn = true
 				self.performSegue(withIdentifier: "showRepos", sender: self)
 			}
 		}
